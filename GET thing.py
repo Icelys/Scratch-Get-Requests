@@ -1,4 +1,4 @@
-#!python 3.4
+#!python3.4
 
 # Import stuff
 import requests
@@ -10,6 +10,8 @@ from time import sleep
 username = input("Enter your username: ")
 password = input("Enter your password: ")
 projectID = input("Enter the project ID: ")
+if projectID == "d":
+    projectID = "91730426"
 
 
 #############################################################################
@@ -59,15 +61,7 @@ while True:
             print("It's one...")
             to_encode = sendGetReq(myDecode(checkVal("Send"))).text
             to_send = myEncode(to_encode)
-            c.set_var("Recieve",to_send)
-            c.set_var("Waiting",0)
+            s.cloud.set_var("Recieve",to_send, projectID)
+            s.cloud.set_var("Waiting",2, projectID)
             print("sent...\n")
-
-
-
-
-
-
-
-
 
